@@ -1,0 +1,26 @@
+meta:
+  created: 2023-06-09T19:57:42+02:00
+  edited: 2023-06-09T19:57:42+02:00
+data:
+  title: "Convert timestamp to ISO 8601: GNU 'date'"
+  snippet: |
+    date -d "@$INPUT" -Iseconds
+  examples:
+    - command: |
+        date -d "@1679674038" -Iseconds
+      output: |
+        2023-03-24T17:07:18+01:00
+  related:
+    - convert-timestamp-to-iso-8601-bsd-date
+    - convert-yaml-value-from-timestamp-to-iso-8601-with-gnu-date-and-gnu-sed
+  description: |
+    > This command is specific to the [GNU version](https://man7.org/linux/man-pages/man1/date.1.html) of _date_.
+
+    The command converts a UNIX timestamp (in seconds) to a [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formatted date.
+
+    Explanations:
+
+    - The `-d` option allows specifying the input date in various accepted formats. The `@` indicates that the provided date is in UNIX timestamp format.
+    - The `-I` option sets the output format to ISO 8601. The appended `seconds` keyword specifies the desired precision (may also be `hours`, `minutes`, `ns`, or `date`, and these keywords may be abbreviated to any unique prefix). 
+
+    > Note: [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) is largely equivalent to [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339), with RFC 3339 allowing for some more variation.

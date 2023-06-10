@@ -1,0 +1,27 @@
+meta:
+  created: 2023-06-09T19:57:42+02:00
+  edited: 2023-06-09T19:57:42+02:00'
+data:
+  title: "Convert timestamp to ISO 8601: BSD 'date'"
+  snippet: |
+    date -j -f "%s" "$INPUT" "+%Y-%m-%dT%H:%M:%S%z"
+  examples:
+    - command: |
+        date -j -f "%s" 1679674038 "+%Y-%m-%dT%H:%M:%S%z"
+      output: |
+        2023-03-24T17:07:18+0100
+  related:
+    - convert-timestamp-to-iso-8601-gnu-date
+  description: |
+    > This command is specific to the [BSD version](https://man.freebsd.org/cgi/man.cgi?date) of _date_ (as e.g. found by default on macOS).
+
+    The command converts a UNIX timestamp (in seconds) to a [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formatted date.
+
+    Explanations:
+
+    - `-j`: disables using the current date, and instead uses the date passed on the command line
+    - `-f`: the input format of the date passed on the command line
+    - `+...`: the output format for the date passed on the command line
+    - The string `%Y-%m-%dT%H:%M:%S%z` reconstructs a valid ISO 8601 date format
+
+    > Note: [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) is largely equivalent to [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339), with RFC 3339 allowing for some more variation.

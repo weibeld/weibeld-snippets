@@ -1,0 +1,28 @@
+meta:
+  created: 2023-06-09T20:12:33+02:00
+  edited: 2023-06-09T20:12:33+02:00
+data:
+  title: "Convert YAML value from timestamp to ISO 8601 with GNU 'date' and GNU 'sed'"
+  snippet: |
+    sed -E 's/^key: ([0-9]+)/echo key: $(date -d "@\1" -Iseconds)/e' "$INPUT_FILE"
+  examples:
+    - command: |
+        echo "key: 1686334648" | sed -E 's/^key: ([0-9]+)/echo key: $(date -d "@\1" -Iseconds)/e'
+      output: |
+        key: 2023-06-09T20:17:28+02:00
+  related:
+    - convert-timestamp-to-iso-8601-gnu-date
+  usages:
+    - Conversion of dates in YAML frontmatter of earlier file versions in [weibeld/weibeld-notes](https://github.com/weibeld/weibeld-notes).
+  description: |
+    > Caution: this command is specific to the GNU versions of [_sed_](https://man7.org/linux/man-pages/man1/sed.1.html) and [_date_](https://man7.org/linux/man-pages/man1/date.1.html) (doesn't work with the corresponding BSD versions).
+
+    The command converts the value of `key:` in a YAML file from a UNIX timestamp to a [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formatted date.
+
+    Explanations:
+
+    - The `-E` option of _sed_ enables the extended regex format and is necessary to correctly recognise the provided regex.
+    - The `e` modifier in `s///e` causes the replacement pattern to be executed as a shell command. The output of this shell command becomes the actual replacement string.
+    - For the _date_ invocation, see [[convert-timestamp-to-iso-8601-gnu-date]].
+
+    The gist of this command is that the `s///e` modifier allows _sed_ capture groups to be passed to shell commands to further process them before inserting them in the output.
