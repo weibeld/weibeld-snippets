@@ -1,6 +1,6 @@
 ---
-created: 2023-06-09T19:57:42+02:00
-edited: 2023-06-09T19:57:42+02:00'
+created: 2024-02-07T23:42:50UTC
+edited: 2024-02-07T23:42:50UTC
 title: "Extract all URLs matching a specific pattern from a website"
 ---
 
