@@ -1,0 +1,15 @@
+---
+created: 2023-06-09T19:57:42+02:00
+edited: 2023-06-09T19:57:42+02:00'
+title: "Extract all URLs matching a specific pattern from a website"
+---
+
+Execute the following in the JavaScript console of a web browser (e.g. Chrome):
+
+```javascript
+var urls = document.getElementsByTagName('a');
+for (i in urls) {
+    var href = urls[i].href
+    if (href.match(/.*/)) console.log(href)
+}
+```
